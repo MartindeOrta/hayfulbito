@@ -5,7 +5,7 @@ import App from './App.vue'
 
 import { initializeApp } from 'firebase/app';
 import { getAuth } from 'firebase/auth';
-
+console.log(import.meta.env.VITE_FIREBASE_API_KEY);
 const firebaseConfig = {
 
     projectId: "hayfulbito-a200a",

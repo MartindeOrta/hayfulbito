@@ -1,10 +1,13 @@
 import { createApp } from 'vue'
-import './style.css'
-import App from './App.vue'
 
+import App from './App.vue'
+import router from './router';
+import './style.css'
 
 import { initializeApp } from 'firebase/app';
 import { getAuth } from 'firebase/auth';
+import { getFirestore } from 'firebase/firestore';
+
 console.log(import.meta.env.VITE_FIREBASE_API_KEY);
 const firebaseConfig = {
 
@@ -20,4 +23,12 @@ const firebaseConfig = {
 
 const appPlic = initializeApp(firebaseConfig);
 export const auth = getAuth(appPlic);
-createApp(App).mount('#app')
+export const db = getFirestore(appPlic);
+
+const app = createApp(App);
+app.use(router);
+app.mount('#app');
+
+
+
+

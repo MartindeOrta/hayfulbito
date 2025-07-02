@@ -3,7 +3,7 @@ import LoginGoogle from './components/LoginGoogle.vue';
 import HelloWorld from './components/HelloWorld.vue'
 </script>
 
-<template>
+<!--<template>
   <div>
     <a href="https://vite.dev" target="_blank">
       <img src="/vite.svg" class="logo" alt="Vite logo" />
@@ -12,9 +12,24 @@ import HelloWorld from './components/HelloWorld.vue'
       <img src="./assets/vue.svg" class="logo vue" alt="Vue logo" />
     </a>
   </div>
+
     <LoginGoogle />
   <HelloWorld msg="Vite + Vue" />
+</template>-->
+<template>
+  <Suspense>
+    <router-view />
+    <template #fallback>
+      <div>Cargando...</div>
+    </template>
+  </Suspense>
 </template>
+
+<!--
+
+<template>
+  <router-view />
+</template>-->
 
 <style scoped>
 .logo {

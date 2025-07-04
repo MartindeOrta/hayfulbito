@@ -5,7 +5,7 @@ import HomeView from '../views/HomeView.vue';
 // más componentes a medida que los agregás
 
 const routes = [
-  { path: '/', component: LoginGoogle },
+  { path: '/', component: HomeView},
   { path: '/completar-perfil', component: CompletarPerfil },
   { path: '/hayfulbito', component: HomeView }
 ];

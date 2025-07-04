@@ -37,9 +37,9 @@ async function loginWithGoogle() {
         activo: false
       });
    
-      router.push('/listar-partidos');
+      router.push('/');
     } else {
-      router.push('/listar-partidos');
+      router.push('/');
     
 
     }

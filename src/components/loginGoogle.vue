@@ -11,9 +11,13 @@ import { GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
 import { auth } from '../main';
 import { db } from '../main'
 import { doc, getDoc, setDoc, serverTimestamp } from 'firebase/firestore';
+import { setPersistence, browserLocalPersistence } from 'firebase/auth';
+import { useRouter } from 'vue-router';
+const router = useRouter();
 async function loginWithGoogle() {
   const provider = new GoogleAuthProvider();
   try {
+    await setPersistence(auth, browserLocalPersistence);
     const result = await signInWithPopup(auth, provider);
     const user = result.user;
 
@@ -30,14 +34,17 @@ async function loginWithGoogle() {
         fotoPerfil: user.photoURL,
         fechaRegistro: serverTimestamp(),
         rol: 'jugador',
-        activo: true
+        activo: false
       });
-      console.log("✅ Usuario creado en Firestore");
+   
+      router.push('/listar-partidos');
     } else {
-      console.log("🔄 Usuario ya registrado");
+      router.push('/listar-partidos');
+    
+
     }
 
-    alert(`¡Bienvenido, ${user.displayName}!`);
+   // alert(`¡Bienvenido, ${user.displayName}!`);
   } catch (error) {
     alert('Error al iniciar sesión: ' + error.message);
   }
